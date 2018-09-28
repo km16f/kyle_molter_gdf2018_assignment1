@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour {
 
     public float speed;
-    public Text countText1, countText2, Total;
+    public Text countText1, countText2, Total, Win;
 
     private Rigidbody2D moving;
     private int count1;
@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour {
         moving = GetComponent<Rigidbody2D>();
         count1 = 0;
         count2 = 0;
+        Win.text = "";
         SetCount();
     }
 
@@ -49,10 +50,14 @@ public class PlayerMovement : MonoBehaviour {
 
     void SetCount()
     {
-        countText1.text = "Count1: " + count1.ToString();
-        countText2.text = "Count2: " + count2.ToString();
+        countText1.text = "Blue: " + count1.ToString();
+        countText2.text = "Green: " + count2.ToString();
         tot = count1 + count2 * 5;
         Total.text = "Total: " + tot.ToString();
+        if(tot >= 75)
+        {
+            Win.text = "WINNER!!";
+        }
     }
 }
 
